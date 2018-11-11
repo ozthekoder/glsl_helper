@@ -7,14 +7,15 @@
 namespace glsl
 {
 
-struct Lexeme
-{
-    std::regex pattern;
-};
-
 struct Token
 {
-    Lexeme lexeme;
+    std::string type;
+    std::string pattern;
+};
+
+struct Lexeme
+{
+    Token token;
     size_t line;
     std::string value;
 };
