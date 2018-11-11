@@ -1,6 +1,12 @@
 #ifndef GLSL_H
 #define GLSL_H
-namespace GLSL
+
+#include <regex>
+#include <string>
+
+#include "defs.h"
+
+namespace glsl
 {
-}
+}; // namespace glsl
 #endif

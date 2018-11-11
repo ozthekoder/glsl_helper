@@ -1,5 +1,5 @@
 #include "glsl.hpp"
 
-namespace GLSL
+namespace glsl
 {
 }
