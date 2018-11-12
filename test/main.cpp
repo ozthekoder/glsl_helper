@@ -1,5 +1,7 @@
-#include "gtest/gtest.h"
-#include "gmock/gmock.h"
+#include <gtest/gtest.h>
+#include <gmock/gmock.h>
+#include <fstream>
+#include <iostream>
 #include "tokenizer.hpp"
 
 using namespace glsl;
@@ -22,4 +24,13 @@ TEST(Tokenizer, resplit)
     EXPECT_EQ(pieces[3], "vec3(1.0,");
     EXPECT_EQ(pieces[4], "0.5,");
     EXPECT_EQ(pieces[5], "0.2);");
+}
+
+TEST(Tokenizer, tokenize)
+{
+    Tokenizer tokenizer;
+    std::ifstream fileStream(PROJECT_SOURCE_DIR "/shaders/multiple_lights.vert");
+    auto src = std::string(std::istreambuf_iterator<char>(fileStream), std::istreambuf_iterator<char>());
+    std::vector<Lexeme> lexemes = tokenizer.tokenize(src);
+    EXPECT_EQ(1, 1);
 }

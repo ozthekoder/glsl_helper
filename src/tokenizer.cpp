@@ -54,12 +54,6 @@ const std::vector<Token> Tokenizer::tokens = {
     {std::string("EQUAL"), std::string("=")},
     {std::string("AMPERSAND"), std::string("&")},
     {std::string("QUESTION"), std::string("?")},
-    {std::string("IDENTIFIER"),
-     std::string("{NONDIGIT}({NONDIGIT}|{DIGIT})*")},
-    {std::string("INTEGER_CONSTANT"),
-     std::string("{DIGIT}+")},
-    {std::string("FLOATING_CONSTANT"),
-     std::string("{DIGIT}+\.{DIGIT}+")},
     {std::string("CONST"), std::string("const")},
     {std::string("UNIFORM"), std::string("uniform")},
     {std::string("BUFFER"), std::string("buffer")},
@@ -220,10 +214,40 @@ const std::vector<Token> Tokenizer::tokens = {
     {std::string("STRUCT"), std::string("struct")},
     {std::string("TRUE_VALUE"), std::string("true")},
     {std::string("FALSE_VALUE"), std::string("false")},
+    {std::string("IDENTIFIER"),
+     std::string("[_a-zA-Z]([_a-zA-Z]|[0-9])*")},
+    {std::string("INTEGER_CONSTANT"),
+     std::string("[0-9]+")},
+    {std::string("FLOATING_CONSTANT"),
+     std::string("[0-9]+\.[0-9]+")},
 };
 
-std::vector<Token> Tokenizer::tokenize(std::string source)
+std::vector<Lexeme> Tokenizer::tokenize(std::string source)
 {
     std::vector<std::string> pieces = split(source);
+    std::vector<Lexeme> lexemes;
+    for (auto it = pieces.begin(); it != pieces.end(); ++it)
+    {
+        std::string piece = *it;
+        std::string result;
+
+        for (auto i = Tokenizer::tokens.begin(); i != Tokenizer::tokens.end(); ++i)
+        {
+            try
+            {
+                Token token = *i;
+                std::regex re(token.pattern);
+                if (std::regex_match(piece, re))
+                {
+                    std::cout << piece << " -> " << token.type << std::endl;
+                }
+            }
+            catch (std::regex_error &e)
+            {
+            }
+        }
+    }
+
+    return lexemes;
 }
 } // namespace glsl

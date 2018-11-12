@@ -34,7 +34,7 @@ endif()
 
 set(SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src")
 set(INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/include")
-
+add_definitions(-DPROJECT_SOURCE_DIR=\"${PROJECT_SOURCE_DIR}\")
 file(GLOB GLSL_HELPER_SOURCES src/*.cpp)
 file(GLOB GLSL_UNIT_TESTS test/*.cpp)
 add_library(glsl ${GLSL_HELPER_SOURCES})

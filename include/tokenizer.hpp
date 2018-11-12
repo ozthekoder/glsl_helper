@@ -3,6 +3,9 @@
 
 #include "defs.h"
 #include <vector>
+#include <string>
+#include <fstream>
+#include <iostream>
 
 namespace glsl
 {
@@ -13,7 +16,7 @@ public:
   std::vector<Lexeme> lexemes;
   Tokenizer() {}
 
-  std::vector<Token> tokenize(std::string source);
+  std::vector<Lexeme> tokenize(std::string source);
   std::vector<std::string> split(const std::string &s, std::string rgx_str = "\\s+")
   {
 
