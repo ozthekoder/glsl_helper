@@ -24,10 +24,21 @@
       }
     ]
   },
-"gtest-adapter.debugConfig": "(lldb) Launch",
+"gtest-adapter.debugConfig": "gtest",
 "gtest-adapter.supportLocation": true,
 "files.associations": {
-  "streambuf": "cpp",
-  "iostream": "cpp"
+    "streambuf": "cpp",
+    "iostream": "cpp",
+    "iosfwd": "cpp",
+    "__config": "cpp",
+    "__nullptr": "cpp",
+    "cstddef": "cpp",
+    "exception": "cpp",
+    "initializer_list": "cpp",
+    "new": "cpp",
+    "stdexcept": "cpp",
+    "type_traits": "cpp",
+    "typeinfo": "cpp",
+    "algorithm": "cpp"
 }
 }
