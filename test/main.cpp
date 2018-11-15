@@ -9,8 +9,8 @@ using namespace glsl;
 TEST(Tokenizer, tokens)
 {
     Tokenizer tokenizer;
-    EXPECT_EQ(Tokenizer::tokens[0].type, std::string("SPACE"));
-    EXPECT_EQ(Tokenizer::tokens[0].pattern, std::string("\s+"));
+    EXPECT_EQ(tokens[0].type, TokenType::SPACE);
+    EXPECT_EQ(tokens[0].pattern, std::string("\\s+"));
 }
 
 TEST(Tokenizer, resplit)

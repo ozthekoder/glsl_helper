@@ -1,18 +1,17 @@
 #ifndef TOKENIZER_H
 #define TOKENIZER_H
 
-#include "defs.h"
 #include <vector>
 #include <string>
 #include <fstream>
 #include <iostream>
+#include "defs.h"
 
 namespace glsl
 {
 class Tokenizer
 {
 public:
-  static const std::vector<Token> tokens;
   std::vector<Lexeme> lexemes;
   Tokenizer() {}
 

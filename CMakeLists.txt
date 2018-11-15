@@ -40,7 +40,7 @@ file(GLOB GLSL_UNIT_TESTS test/*.cpp)
 add_library(glsl ${GLSL_HELPER_SOURCES})
 target_include_directories(glsl PRIVATE ${INCLUDE_DIR})
 include_directories(${INCLUDE_DIR})
-
+set (CMAKE_CXX_STANDARD 17)
 set_property(TARGET glsl PROPERTY CXX_STANDARD 17)
 
 
