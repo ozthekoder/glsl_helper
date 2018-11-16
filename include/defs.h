@@ -247,7 +247,8 @@ const std::vector<Token> tokens = {
     {std::string("IDENTIFIER"), std::string("[_a-zA-Z]([_a-zA-Z]|[0-9])*"), TokenType::IDENTIFIER},
     {std::string("INTEGER_CONSTANT"), std::string("[0-9]+"), TokenType::INTEGER_CONSTANT},
     {std::string("FLOATING_CONSTANT"), std::string("[0-9]+\\.[0-9]+"), TokenType::FLOATING_CONSTANT},
-    {std::string("FLOATING_CONSTANT"), std::string("[0-9]+\\.[0-9]+"), TokenType::FLOATING_CONSTANT},
-    {std::string("FLOATING_CONSTANT"), std::string("[0-9]+\\.[0-9]+"), TokenType::FLOATING_CONSTANT}};
+    {std::string("DIGIT"), std::string("[0-9]+\\.[0-9]+"), TokenType::FLOATING_CONSTANT},
+    {std::string("NONDIGIT"), std::string("[0-9]+\\.[0-9]+"), TokenType::FLOATING_CONSTANT},
+};
 }; // namespace glsl
 #endif

@@ -35,6 +35,28 @@ public:
     return elems;
   }
 
+  Token findTokenByPattern(std::string pattern) {}
+  std::string preprocessPattern(std::string pattern)
+  {
+    std::regex re("<(.+)>");
+    std::smatch matches;
+
+    if (std::regex_search(pattern, matches, re))
+    {
+      std::cout << "Match found\n";
+
+      for (size_t i = 0; i < matches.size(); ++i)
+      {
+        std::string subpattern = matches[i].str();
+        std::cout << i << ": '" << subpattern << "'\n";
+      }
+    }
+    else
+    {
+      std::cout << "Match not found\n";
+    }
+  }
+
 private:
 };
 } // namespace glsl
