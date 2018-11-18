@@ -10,7 +10,7 @@ std::vector<Lexeme> Tokenizer::tokenize(std::string source)
     {
         std::string piece = *it;
         std::string result;
-        std::cout << piece << std::endl;
+        // std::cout << piece << std::endl;
         for (auto i = tokens.begin(); i != tokens.end(); ++i)
         {
             try
@@ -61,9 +61,10 @@ std::vector<Lexeme> Tokenizer::tokenize(std::string source)
                         type = "UNIDENTIFIED";
                     }
 
-                    std::cout << "-> " << type << " , REGEX: " << token.pattern << std::endl;
+                    // std::cout << "-> " << type << " , REGEX: " << token.pattern << std::endl;
                     break;
                 }
+                preprocessPattern(token.pattern);
             }
             catch (std::regex_error &e)
             {

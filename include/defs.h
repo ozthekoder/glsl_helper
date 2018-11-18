@@ -244,11 +244,11 @@ const std::vector<Token> tokens = {
     {std::string("STRUCT"), std::string("struct"), TokenType::KEYWORD},
     {std::string("TRUE_VALUE"), std::string("true"), TokenType::KEYWORD},
     {std::string("FALSE_VALUE"), std::string("false"), TokenType::KEYWORD},
-    {std::string("IDENTIFIER"), std::string("[_a-zA-Z]([_a-zA-Z]|[0-9])*"), TokenType::IDENTIFIER},
-    {std::string("INTEGER_CONSTANT"), std::string("[0-9]+"), TokenType::INTEGER_CONSTANT},
-    {std::string("FLOATING_CONSTANT"), std::string("[0-9]+\\.[0-9]+"), TokenType::FLOATING_CONSTANT},
-    {std::string("DIGIT"), std::string("[0-9]+\\.[0-9]+"), TokenType::FLOATING_CONSTANT},
-    {std::string("NONDIGIT"), std::string("[0-9]+\\.[0-9]+"), TokenType::FLOATING_CONSTANT},
+    {std::string("IDENTIFIER"), std::string("<NONDIGIT>(<NONDIGIT>|<DIGIT>)*"), TokenType::IDENTIFIER},
+    {std::string("INTEGER_CONSTANT"), std::string("<DIGIT>"), TokenType::INTEGER_CONSTANT},
+    {std::string("FLOATING_CONSTANT"), std::string("<DIGIT>\\.<DIGIT>"), TokenType::FLOATING_CONSTANT},
+    {std::string("DIGIT"), std::string("[0-9]+"), TokenType::FLOATING_CONSTANT},
+    {std::string("NONDIGIT"), std::string("[_a-zA-Z]+"), TokenType::FLOATING_CONSTANT},
 };
 }; // namespace glsl
 #endif

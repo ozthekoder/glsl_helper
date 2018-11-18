@@ -6,7 +6,6 @@
 #include <fstream>
 #include <iostream>
 #include "defs.h"
-
 namespace glsl
 {
 class Tokenizer
@@ -35,25 +34,27 @@ public:
     return elems;
   }
 
-  Token findTokenByPattern(std::string pattern) {}
-  std::string preprocessPattern(std::string pattern)
+  Token findTokenByName(std::string name)
   {
-    std::regex re("<(.+)>");
-    std::smatch matches;
-
-    if (std::regex_search(pattern, matches, re))
+    for (auto t : tokens)
     {
-      std::cout << "Match found\n";
-
-      for (size_t i = 0; i < matches.size(); ++i)
+      if (t.name == name)
       {
-        std::string subpattern = matches[i].str();
-        std::cout << i << ": '" << subpattern << "'\n";
+        return t;
       }
     }
-    else
+  }
+
+  void preprocessPattern(std::string &pattern)
+  {
+    std::regex re("<[_A-Z]+>");
+    std::smatch match;
+
+    std::string curr = pattern;
+    while (std::regex_search(pattern, match, re))
     {
-      std::cout << "Match not found\n";
+      Token t = findTokenByName(match.str().substr(1, match.str().length() - 2));
+      pattern = std::regex_replace(pattern, std::regex(match.str()), t.pattern);
     }
   }
 
