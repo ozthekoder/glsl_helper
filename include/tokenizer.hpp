@@ -34,27 +34,36 @@ public:
     return elems;
   }
 
-  Token findTokenByName(std::string name)
+  Token *findTokenByName(std::string name)
   {
     for (auto t : tokens)
     {
       if (t.name == name)
       {
-        return t;
+        return &t;
       }
     }
+
+    return nullptr;
   }
 
   void preprocessPattern(std::string &pattern)
   {
-    std::regex re("<[_A-Z]+>");
+    std::regex re("<.+>");
     std::smatch match;
 
     std::string curr = pattern;
     while (std::regex_search(pattern, match, re))
     {
-      Token t = findTokenByName(match.str().substr(1, match.str().length() - 2));
-      pattern = std::regex_replace(pattern, std::regex(match.str()), t.pattern);
+      std::string subpattern = match.str().substr(1, match.str().length() - 2);
+
+      for (auto t : tokens)
+      {
+        if (t.name == subpattern)
+        {
+          pattern = std::regex_replace(pattern, std::regex(match.str()), t.pattern);
+        }
+      }
     }
   }
 
