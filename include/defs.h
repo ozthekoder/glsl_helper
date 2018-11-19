@@ -20,7 +20,8 @@ enum TokenType
     OPERATOR,
     SEMICOLON,
     OPEN_BRACE,
-    CLOSE_BRACE
+    CLOSE_BRACE,
+    GRAMMAR
 };
 
 struct Token
@@ -38,6 +39,7 @@ struct Lexeme
 };
 
 const std::vector<Token> tokens = {
+    {std::string("VARIABLE_IDENTIFIER"), std::string("<IDENTIFIER>"), TokenType::GRAMMAR},
     {std::string("SPACE"), std::string("\\s+"), TokenType::SPACE},
     {std::string("LEFT_OP"), std::string("<<"), TokenType::OPERATOR},
     {std::string("RIGHT_OP"), std::string(">>"), TokenType::OPERATOR},
