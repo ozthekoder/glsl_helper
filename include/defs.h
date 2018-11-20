@@ -319,7 +319,7 @@ struct Lexeme
 {
     Token token;
     size_t line;
-    std::string value;
+    std::string text;
 };
 
 const std::vector<Token> tokens = {

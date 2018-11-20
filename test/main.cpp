@@ -3,14 +3,14 @@
 #include <fstream>
 #include <iostream>
 #include "tokenizer.hpp"
+#include "ast.hpp"
 
 using namespace glsl;
 // Simple test, does not use gmock
 TEST(Tokenizer, tokens)
 {
-    Tokenizer tokenizer;
-    EXPECT_EQ(tokens[0].type, TokenType::SPACE);
-    EXPECT_EQ(tokens[0].pattern, std::string("\\s+"));
+    EXPECT_EQ(tokens[0].type, TokenType::LEFT_OP);
+    EXPECT_EQ(tokens[0].pattern, std::string("\\<<"));
 }
 
 TEST(Tokenizer, resplit)

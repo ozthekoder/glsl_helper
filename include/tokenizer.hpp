@@ -17,7 +17,6 @@ public:
   std::vector<Lexeme> tokenize(std::string source);
   std::vector<std::string> split(const std::string &s, std::string rgx_str = "\\s+")
   {
-
     std::vector<std::string> elems;
 
     std::regex rgx(rgx_str);

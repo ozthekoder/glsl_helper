@@ -5,7 +5,7 @@
 #include <string>
 
 #include "defs.h"
-
+#include "ast.hpp"
 namespace glsl
 {
 }; // namespace glsl
