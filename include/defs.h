@@ -317,7 +317,7 @@ struct Token
 
 struct Lexeme
 {
-    Token token;
+    Token *token;
     size_t line;
     std::string text;
 };

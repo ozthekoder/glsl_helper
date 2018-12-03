@@ -15,6 +15,18 @@
       "environment": [],
       "externalConsole": true,
       "MIMode": "lldb"
+    },
+    {
+      "name": "main",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/glsl_helper",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": true,
+      "MIMode": "lldb"
     }
   ]
 }

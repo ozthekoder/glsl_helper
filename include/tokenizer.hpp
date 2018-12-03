@@ -11,10 +11,9 @@ namespace glsl
 class Tokenizer
 {
 public:
-  std::vector<Lexeme> lexemes;
   Tokenizer() {}
 
-  std::vector<Lexeme> tokenize(std::string source);
+  std::vector<Lexeme *> tokenize(std::string source);
   std::vector<std::string> split(const std::string &s, std::string rgx_str = "\\s+")
   {
     std::vector<std::string> elems;
@@ -26,7 +25,8 @@ public:
 
     while (iter != end)
     {
-      elems.push_back(*iter);
+      std::string elem = *iter;
+      elems.push_back(elem);
       ++iter;
     }
 
@@ -35,15 +35,36 @@ public:
 
   Token *findTokenByName(std::string name)
   {
+    Token *tkn = nullptr;
     for (auto t : tokens)
     {
       if (t.name == name)
       {
-        return &t;
+        tkn = &t;
       }
     }
 
-    return nullptr;
+    return tkn;
+  }
+
+  Lexeme *matchString(std::string &piece, Token &token)
+  {
+    Lexeme *lex = nullptr;
+    std::string pattern = token.pattern;
+    preprocessPattern(pattern);
+    std::regex re("^" + pattern);
+    std::smatch match;
+
+    if (std::regex_search(piece, match, re))
+    {
+      std::cout << "SIZE => " << match.size() << std::endl;
+      Token *tkn = &token;
+      Lexeme l = {tkn, 0, match.str()};
+      lex = &l;
+      piece = match.suffix();
+    }
+
+    return lex;
   }
 
   void preprocessPattern(std::string &pattern)
